@@ -23,7 +23,8 @@ class AlienShip{
 			return 0
 		}
 	}
-}
+} //Alien Ship Class
+
 //make the human ship object
 const ussAssembly = {
 	//assign it standard properties
@@ -45,14 +46,14 @@ const ussAssembly = {
 			return 0
 		}
 	}
-}
+} //ussAssembly Object
 
 //make a random number generator that will return a value between two input values
 const randomNumber = (lowNum, highNum) => {
 	const diff = highNum - lowNum;
 	const randNum = ((Math.random() * diff) + lowNum);
 	return (Math.round(randNum * 100) / 100)
-}
+} //randomNumber Function
 
 // const enemyShip = new AlienShip;
 
@@ -80,7 +81,7 @@ const battle = (ship1, ship2) => {
 		promptUser();
 	}
 	return
-}
+} //battle Function
 
 //function to prompt user what action to take next after defeating enemy ship
 const promptUser = () => {
@@ -103,7 +104,7 @@ const promptUser = () => {
 			userInput = window.prompt(`Please enter a valid response. Your ship has ${ussAssembly.hull} hull strength left. Would you like to continue to the next enemy or would you like to retreat? (Enter continue or retreat.)`)
 		}
 	}	
-}
+} //promptUser Function
 
 let retreat = false;
 //make a for loop to loop through all of the alien ships in order
@@ -114,8 +115,9 @@ for(let i = 0; i < enemyShips.length; i++){
 	while(enemyShips[i].hull > 0 && ussAssembly.hull > 0 && retreat === false) {
 		battle(ussAssembly, enemyShips[i]);
 	}
-	console.log(`Current hull strengh: ${ussAssembly.hull}`);
-
+	if(ussAssembly.hull > 0){
+		console.log(`Current hull strengh: ${ussAssembly.hull}`);
+	}
 
 	if(retreat === true || ussAssembly.hull <= 0){
 		break
@@ -123,6 +125,7 @@ for(let i = 0; i < enemyShips.length; i++){
 
 }
 
+//logs different messages depending on user action
 if(retreat != true && ussAssembly.hull > 0){
 	console.log('Congratulations! You defeated all of the alien ships!');
 } else if(retreat === true) {
