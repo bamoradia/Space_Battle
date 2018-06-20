@@ -6,7 +6,7 @@ class AlienShip{
 		//use random numbers to generate stats for each instatiation of the class
 		this.hull = randomNumber(3, 6);
 		this.firepower = randomNumber(2, 4)
-		this.accuracy = randomNumber(.6, .8, 'dec')
+		this.accuracy = randomNumber(.6, .8)
 	}
 	//reduces the hull strength by the firepower of the opposing ship
 	receiveDamage(damage){
@@ -53,6 +53,8 @@ const randomNumber = (lowNum, highNum) => {
 
 const enemyShip = new AlienShip;
 
+
+// const enemyShips = [];
 // for(let i = 0; i < 6; i++){
 // 	enemyShips[i].push((new AlienShip));
 // }
@@ -67,13 +69,35 @@ const battle = (ship1, ship2) => {
 		}
 	} else {
 		console.log("You defeated the enemy ship!");
+		promptUser();
 	}
 	return
 }
 
-let count = 0;
+const promptUser = () => {
+	let userInput = window.prompt(`Your ship has ${ussAssembly.hull} hull strength left. Would you like to continue to the next enemy or would you like to retreat? (Enter continue or retreat.)`);
+	let loop = true;
+	while(loop) {
+		if(userInput.toLowerCase() === 'continue'){
+			loop = false;
+			return
+		} else if (userInput.toLowerCase() === 'retreat') {
+			loop = false;
+			stay = false;
+			return 
+		} else {
+			userInput = window.prompt(`Please enter a valid response. Your ship has ${ussAssembly.hull} hull strength left. Would you like to continue to the next enemy or would you like to retreat? (Enter continue or retreat.)`)
+		}
+	}	
+}
+
+
+
+
+
+let stay = 0;
 //make a loop to continue battling one ship until either's hull goes to 0
-while(enemyShip.hull > 0 && ussAssembly.hull > 0 && count < 7) {
+while(enemyShip.hull > 0 && ussAssembly.hull > 0 && stay < 7) {
 	battle(ussAssembly, enemyShip);
-	count++;
+	stay++;
 }
