@@ -93,7 +93,7 @@ const promptUser = () => {
 		//if user wants to retreat	
 		} else if (userInput.toLowerCase() === 'retreat') {
 			loop = false;
-			stay = false;
+			retreat = true;
 			return 
 		//user provided a non valid response continues looping 
 		} else {
@@ -102,19 +102,29 @@ const promptUser = () => {
 	}	
 }
 
+let retreat = false;
+//make a for loop to loop through all of the alien ships in order
+//will include an option to break out if the user wants to retreat or if the ship is destroyed
+for(let i = 0; i < enemyShips.length; i++){
+	
+	//make a loop to continue battling one ship until either's hull goes to 0
+	while(enemyShips[i].hull > 0 && ussAssembly.hull > 0 && retreat === false) {
+		battle(ussAssembly, enemyShips[i]);
+	}
+	console.log(`Current hull strengh: ${ussAssembly.hull}`);
 
 
+	if(retreat === true || ussAssembly.hull <= 0){
+		break
+	}
 
+}
 
-// let stay = 0;
-// //make a loop to continue battling one ship until either's hull goes to 0
-// while(enemyShip.hull > 0 && ussAssembly.hull > 0 && stay < 7) {
-// 	battle(ussAssembly, enemyShip);
-// 	stay++;
-// }
-
-
-
+if(retreat != true && ussAssembly.hull > 0){
+	console.log('Congratulations! You defeated all the alien ships!');
+} else if(retreat === true) {
+	console.log('You successfully retreated');
+}
 
 
 
