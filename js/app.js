@@ -13,10 +13,10 @@ class AlienShip{
 	//made an attack method which uses a random number to determine if the attack was succesful or not
 	attack(){
 		if(Math.random() < this.accuracy){
-			console.log('The enemy ship hit you!');
+			//console.log('The enemy ship hit you!');
 			return this.firepower;
 		} else {
-			console.log("The enemy ship missed it's attack!");
+			//console.log("The enemy ship missed it's attack!");
 			return 0
 		}
 	}
@@ -36,10 +36,10 @@ const ussAssembly = {
 	//made an attack method which uses a random number to determine if the attack was succesful or not
 	attack(){
 		if(Math.random() < this.accuracy){
-			console.log('Successful attack! You hit the enemy ship!');
+			//console.log('Successful attack! You hit the enemy ship!');
 			return this.firepower;
 		} else {
-			console.log('Your attack missed the enemy ship!');
+			//console.log('Your attack missed the enemy ship!');
 			return 0
 		}
 	}
