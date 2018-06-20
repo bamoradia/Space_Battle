@@ -11,6 +11,7 @@ class AlienShip{
 	//reduces the hull strength by the firepower of the opposing ship
 	receiveDamage(damage){
 		this.hull -= damage;
+		this.hull = (Math.round(this.hull * 100) / 100);
 	}
 	//made an attack method which uses a random number to determine if the attack was succesful or not
 	attack(){
@@ -32,6 +33,7 @@ const ussAssembly = {
 	//make a receive damage method which will reduce hull strengh by the firepower of the opposing ship
 	receiveDamage(damage){
 		this.hull -= damage;
+		this.hull = (Math.round(this.hull * 100) / 100);
 	},
 	//made an attack method which uses a random number to determine if the attack was succesful or not
 	attack(){
@@ -48,7 +50,8 @@ const ussAssembly = {
 //make a random number generator that will return a value between two input values
 const randomNumber = (lowNum, highNum) => {
 	const diff = highNum - lowNum;
-	return ((Math.random() * diff) + lowNum);
+	const randNum = ((Math.random() * diff) + lowNum);
+	return (Math.round(randNum * 100) / 100)
 }
 
 // const enemyShip = new AlienShip;
@@ -121,7 +124,7 @@ for(let i = 0; i < enemyShips.length; i++){
 }
 
 if(retreat != true && ussAssembly.hull > 0){
-	console.log('Congratulations! You defeated all the alien ships!');
+	console.log('Congratulations! You defeated all of the alien ships!');
 } else if(retreat === true) {
 	console.log('You successfully retreated');
 }
