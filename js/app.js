@@ -78,6 +78,7 @@ const battle = (ship1, ship2) => {
 	} else {
 		console.log("%cYou defeated the enemy ship!", 'color: #14CC00');
 		ship2.hull = 0;
+		shieldRegenerator();
 		promptUser();
 	}
 	return
@@ -105,6 +106,17 @@ const promptUser = () => {
 		}
 	}	
 } //promptUser Function
+
+//probability that the ship's shield regenerator works
+const regenerationChance = .20;
+const shieldRegenerator = () => {
+	if(Math.random() < regenerationChance) {
+		ussAssembly.hull += randomNumber(1, 5);
+		ussAssembly.hull = Math.round((ussAssembly.hull *100) / 100);
+		console.log('Your shield has been regenerated!');
+	}
+} //shieldRegenerator Function
+
 
 let retreat = false;
 //make a for loop to loop through all of the alien ships in order
