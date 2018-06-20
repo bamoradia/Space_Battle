@@ -1,6 +1,3 @@
-console.log('Javascript is linked')
-
-
 class AlienShip{
 	constructor(){
 		//use random numbers to generate stats for each instatiation of the class
@@ -19,7 +16,7 @@ class AlienShip{
 			console.log('The enemy ship hit you!');
 			return this.firepower;
 		} else {
-			console.log("The enemy ship missed it's attack");
+			console.log("The enemy ship missed it's attack!");
 			return 0
 		}
 	}
@@ -28,7 +25,7 @@ class AlienShip{
 //make the human ship object
 const ussAssembly = {
 	//assign it standard properties
-	hull: 2,
+	hull: 20,
 	firepower: 5, 
 	accuracy: 0.7, 
 	//make a receive damage method which will reduce hull strengh by the firepower of the opposing ship
@@ -42,7 +39,7 @@ const ussAssembly = {
 			console.log('Successful attack! You hit the enemy ship!');
 			return this.firepower;
 		} else {
-			console.log('You missed the enemy ship!');
+			console.log('Your attack missed the enemy ship!');
 			return 0
 		}
 	}
@@ -59,9 +56,10 @@ const randomNumber = (lowNum, highNum) => {
 
 
 const enemyShips = [];
-for(let i = 0; i < 6; i++){
+for(let i = 0; i < randomNumber(2, 20); i++){
 	enemyShips.push(new AlienShip());
 }
+console.log(`%cAlert! There are ${enemyShips.length} enemy ships approaching!`, 'text-transform: uppercase; color: #FB2A0A; font-size: large' );
 
 //takes the two ships as inputs
 const battle = (ship1, ship2) => {
@@ -73,11 +71,13 @@ const battle = (ship1, ship2) => {
 		ship1.receiveDamage(ship2.attack());
 		//checks if ship 1 is detroyed
 		if(ship1.hull <= 0) {
+			ship1.hull = 0;
 			console.log("%cYou're ship is defeated!", 'font-weight: bold; color: #7F0C00');
 		}
 	//if ship 2 was destroyed first	
 	} else {
 		console.log("%cYou defeated the enemy ship!", 'color: #14CC00');
+		ship2.hull = 0;
 		promptUser();
 	}
 	return
@@ -129,7 +129,7 @@ for(let i = 0; i < enemyShips.length; i++){
 if(retreat != true && ussAssembly.hull > 0){
 	console.log('%cCongratulations! You defeated all of the alien ships!', 'font-weight: bold; color: #1B7F00');
 } else if(retreat === true) {
-	console.log('You successfully retreated');
+	console.log('%cYou successfully retreated', 'color: #C86B12; font-weight: bold');
 }
 
 
