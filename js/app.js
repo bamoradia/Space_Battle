@@ -28,7 +28,7 @@ class AlienShip{
 //make the human ship object
 const ussAssembly = {
 	//assign it standard properties
-	hull: 20,
+	hull: 2,
 	firepower: 5, 
 	accuracy: 0.7, 
 	//make a receive damage method which will reduce hull strengh by the firepower of the opposing ship
@@ -73,11 +73,11 @@ const battle = (ship1, ship2) => {
 		ship1.receiveDamage(ship2.attack());
 		//checks if ship 1 is detroyed
 		if(ship1.hull <= 0) {
-			console.log("You're ship is defeated!");
+			console.log("%cYou're ship is defeated!", 'font-weight: bold; color: #7F0C00');
 		}
 	//if ship 2 was destroyed first	
 	} else {
-		console.log("You defeated the enemy ship!");
+		console.log("%cYou defeated the enemy ship!", 'color: #14CC00');
 		promptUser();
 	}
 	return
@@ -127,7 +127,7 @@ for(let i = 0; i < enemyShips.length; i++){
 
 //logs different messages depending on user action
 if(retreat != true && ussAssembly.hull > 0){
-	console.log('Congratulations! You defeated all of the alien ships!');
+	console.log('%cCongratulations! You defeated all of the alien ships!', 'font-weight: bold; color: #1B7F00');
 } else if(retreat === true) {
 	console.log('You successfully retreated');
 }
